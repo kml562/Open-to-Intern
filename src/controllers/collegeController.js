@@ -33,14 +33,18 @@ export const postCollage = async (req, res) => {
         message: "Please enter a correct name isValid error",
       });
     }
-console.log("hello")
+      
+         if (!validString(name)){
+          return res.status(400).json({status:false, message:"Please enter a correct name"})
+      }
    
     if (!isValid(fullName)) {
       return res.status(400).json({
         status: false,
         message: "Pleasze enter a correct fullName isValid error",
       });
-    }
+      };
+
 
     const collage = await College.create(req.body);
 
