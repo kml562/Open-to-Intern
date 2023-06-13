@@ -20,7 +20,7 @@ export const postIntern = async (req, res) => {
     }
 
     if (!name || !mobile || !email) {
-      return res.status(400).json({
+      return res.status(404).json({
         status: false,
         message: "Please enter mandatory fields.",
       });

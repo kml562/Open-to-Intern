@@ -9,13 +9,13 @@ export const postCollage = async (req, res) => {
 
 
     if (!name) {
-      return res.status(400).json({
+      return res.status(404).json({
         status: false,
         message: "Please enter name",
       });
     }
     if (!fullName) {
-      return res.status(400).json({
+      return res.status(404).json({
         status: false,
         message: "Please enter fullname",
       });
@@ -72,7 +72,7 @@ export const getCollage = async (req, res) => {
     const { collegeName } = req.query;
 
     if (!collegeName)
-      return res.status(400).json({
+      return res.status(404).json({
         status: false,
         message: "Please send collage name",
       });
@@ -96,7 +96,7 @@ export const getCollage = async (req, res) => {
     const collage = await College.findOne(query);
 
     if (!collage)
-      return res.status(400).json({
+      return res.status(404).json({
         status: false,
         message: "No Collage Found",
       });
