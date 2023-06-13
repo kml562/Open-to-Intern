@@ -1,3 +1,4 @@
+import isURL from "validator/lib/isurl.js";
 import College from "../models/collageModel.js";
 import Intern from "../models/internModel.js";
 import validator from "validator"
@@ -12,7 +13,7 @@ export const postCollage = async (req, res) => {
       return res
         .status(400)
         .json({ status: false, message: "Full Name is required" });
-    if (!logoLink || logoLink.trim() == "" || !validator.isURL(logoLink))
+    if (!logoLink || logoLink.trim() == "" || !isURL(logoLink))
       return res
         .status(400)
         .json({ status: false, message: "Logo Link is required" });

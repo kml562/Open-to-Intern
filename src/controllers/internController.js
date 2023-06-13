@@ -1,7 +1,8 @@
 import Intern from "../models/internModel.js";
 import College from "../models/collageModel.js";
 import validator from "validator";
-import { get } from "mongoose";
+
+
 
 export const postIntern = async (req, res) => {
   try {
@@ -16,7 +17,7 @@ export const postIntern = async (req, res) => {
       res.status(400).json({ status: false, message: "College is required" });
     if (!validator.isEmail(email))
       res.status(400).json({ status: false, message: "Email is invalid" });
-    if (!validator.isMobilePhone(mobile))
+    if (!validator.isMobilePhone (mobile))
       res.status(400).json({ status: false, message: "Mobile is invalid" });
     else {
       const findCollege = await College.findOne({ name: collegeName });
