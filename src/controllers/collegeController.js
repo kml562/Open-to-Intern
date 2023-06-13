@@ -43,7 +43,13 @@ export const postCollage = async (req, res) => {
         status: false,
         message: "Pleasze enter a correct fullName isValid error",
       });
-      };
+    };
+    
+    //check name is unique or not------------------------------------------------------------
+    const checkuniqe = await College.findOne(name);
+    if (checkuniqe) {
+      return res.status(400).json({status:false, message:"Duplicate name"})
+    }
 
 
     const collage = await College.create(req.body);
