@@ -25,14 +25,7 @@ export const postIntern = async (req, res) => {
         message: "Please enter mandatory fields.",
       });
     }
-
-    if (!isValid(name)) {
-      return res.status(400).json({
-        status: false,
-        message: "Please enter a correct name isValid error",
-      });
-    }
-
+ 
     if (!validString(name)) {
       return res.status(400).json({
         status: false,
@@ -53,7 +46,15 @@ export const postIntern = async (req, res) => {
         status: false,
         message: "Please enter a correct email validEmail error",
       });
+    }   
+
+    if (!isValid(name)) {
+      return res.status(400).json({
+        status: false,
+        message: "Please enter a correct name isValid error",
+      });
     }
+
 
     const isCollage = await College.findById(collegeId);
 
