@@ -1,6 +1,5 @@
 import isURL from "validator/lib/isurl.js";
 import College from "../models/collageModel.js";
-import Intern from "../models/internModel.js";
 import validator from "validator"
 export const postCollage = async (req, res) => {
   try {
