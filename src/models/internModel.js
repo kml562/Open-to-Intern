@@ -1,49 +1,30 @@
-import mongoose from "mongoose";
-import validator from "validator";
+const mongoose = require('mongoose');
+/*{ name: {mandatory}, email: {mandatory, valid email, unique}, mobile: {mandatory, valid mobile number, unique}, collegeId: {ObjectId, ref to college model, isDeleted: {boolean, default: false}} */
 
-
-
-const {
-    Schema,
-    model
-} = mongoose
-//-------------------------------------------------------------------------------------
-const internSchema = new Schema({
+const internSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true,
+        required: true
     },
     email: {
         type: String,
         required: true,
-        unique: true,
-        lowercase: true,
-        trim: true,
-        validate: [{
-            validator: validator.isEmail,
-            message: 'Please enter email in correct format',
-            isAsync: true,
-        }]
+        unique: true
     },
     mobile: {
-        type: Number,
+        type: String,
         required: true,
         unique: true
     },
     collegeId: {
-        type: Schema.Types.ObjectId,
-        ref: 'Collage',
+        type: mongoose.Schema.Types.ObjectId,
+        ref : 'College',
         required: true
     },
     isDeleted: {
         type: Boolean,
         default: false
-    },
-},{timestamps : true})
+    }
+})
 
-
-
-const Intern = model('Intern', internSchema)
-
-
-export default Intern
+module.exports = mongoose.model('Intern', internSchema);
